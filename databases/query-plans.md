@@ -7,8 +7,6 @@ tags:
   - performance
   - wiki
 ---
-
-
 # Query Plans
 
 Each time when you query a database,
@@ -37,11 +35,11 @@ The DB fetches data in *pages* and converts it into *rows*. Each
 page being fetched is multiplied by a *fetching cost* (`seq_page_cost`) and
 is then added to the number of converted rows times the *row processing cost* (`cpu_tuple_cost`).
 
-> num_of_pages x seq_page_cost + num_of_rows x cpu_tuple_cost
+> `num_of_pages` x `seq_page_cost` + `num_of_rows` x `cpu_tuple_cost`
 
 When applying a `WHERE` filter an additional performance cost is incurred (`cpu_operator_cost`).
 
-> num_of_pages x seq_page_cost + num_of_rows x cpu_tuple_cost + num_of_rows x cpu_operator_cost
+> `num_of_pages` x `seq_page_cost` + `num_of_rows` x `cpu_tuple_cost` + `num_of_rows` x `cpu_operator_cost`
 
 By default, the `seq_page_cost` is the most expensive and
 the `cpu_operator_cost` the cheapest. These costs are settings and can be changed,
